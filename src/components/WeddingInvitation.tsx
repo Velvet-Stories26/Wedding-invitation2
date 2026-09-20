@@ -152,9 +152,22 @@ export function WeddingInvitation() {
   const [music, setMusic] = useState(false);
   const [progress, setProgress] = useState(0);
   const [revealedDates, setRevealedDates] = useState(0);
+  const [brotherModalOpen, setBrotherModalOpen] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const swipeStart = useRef(0);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setBrotherModalOpen(false);
+      }
+    };
+    if (brotherModalOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [brotherModalOpen]);
 
   useEffect(() => {
     setMounted(true);
@@ -439,9 +452,83 @@ export function WeddingInvitation() {
             <img className="torn-edge torn-edge-bottom" src={bottomTornEdge} alt="" aria-hidden="true" />
             <div data-reveal><p className="eyebrow">The celebrations</p><h2>Join us for</h2></div>
             <div className="event-list">
-              <article className="event-card event-engagement" style={{ backgroundImage: `url(${engagementImage})` }} data-reveal><span>01</span><div><Heart /><p>Tuesday · October 13</p><h3>Engagement</h3><p>3:00 PM in the evening · J.C. Community Hall, Siluvaipuram</p><small>An evening of blessings, laughter & celebration</small><div className="mt-5"><Button asChild variant="outline" className="bg-transparent border-white/40 text-white hover:bg-white/10 hover:text-white backdrop-blur-sm"><a href="https://maps.app.goo.gl/vwfTitZmioioe1EC8?g_st=aw" target="_blank" rel="noreferrer"><MapPin className="mr-2 h-4 w-4" /> View Map</a></Button></div></div></article>
-              <article className="event-card event-wedding" style={{ backgroundImage: `url(${weddingImage})` }} data-reveal><span>02</span><div><CalendarDays /><p>Wednesday · October 14</p><h3>Wedding</h3><p>10:00 AM in the Morning · St.Mary's Church, Vallavilai</p><small>Traditional Indian Attire</small><div className="mt-5"><Button asChild variant="outline" className="bg-transparent border-white/40 text-white hover:bg-white/10 hover:text-white backdrop-blur-sm"><a href="https://maps.app.goo.gl/yDX9gXNNEFK3rAhq7?g_st=aw" target="_blank" rel="noreferrer"><MapPin className="mr-2 h-4 w-4" /> View Map</a></Button></div></div></article>
-              <article className="event-card event-reception"  style={{ backgroundImage: `url(${receptionImage})` }} data-reveal><span>03</span><div><CalendarDays /><p>Wednesday · October 14</p><h3>Reception</h3><p>11:30 AM in the Morning ·  St.Mary's Community Hall, Vallavilai</p><small>Lunch & Celebration </small><div className="mt-5"><Button asChild variant="outline" className="bg-transparent border-white/40 text-white hover:bg-white/10 hover:text-white backdrop-blur-sm"><a href="https://maps.app.goo.gl/hgjhZnmWVZ2ZWevT6?g_st=aw" target="_blank" rel="noreferrer"><MapPin className="mr-2 h-4 w-4" /> View Map</a></Button></div></div></article>
+              <article 
+                className="event-card event-engagement" 
+                style={{ backgroundImage: `url(${engagementImage})` }} 
+                data-reveal
+                onClick={() => window.open("https://maps.app.goo.gl/vwfTitZmioioe1EC8?g_st=aw", "_blank", "noopener,noreferrer")}
+                role="button"
+                tabIndex={0}
+                title="Click image to open location map"
+              >
+                <span>01</span>
+                <div>
+                  <Heart />
+                  <p className="event-date-text">Tuesday · October 13</p>
+                  <h3>Engagement</h3>
+                  <p className="event-time-text">3:00 PM in the evening · J.C. Community Hall, Siluvaipuram</p>
+                  <small>An evening of blessings, laughter &amp; celebration</small>
+                  <div className="mt-5" onClick={(e) => e.stopPropagation()}>
+                    <Button asChild variant="outline" className="bg-transparent border-white/40 text-white hover:bg-white/10 hover:text-white backdrop-blur-sm">
+                      <a href="https://maps.app.goo.gl/vwfTitZmioioe1EC8?g_st=aw" target="_blank" rel="noreferrer">
+                        <MapPin className="mr-2 h-4 w-4" /> View Map
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </article>
+
+              <article 
+                className="event-card event-wedding" 
+                style={{ backgroundImage: `url(${weddingImage})` }} 
+                data-reveal
+                onClick={() => window.open("https://maps.app.goo.gl/yDX9gXNNEFK3rAhq7?g_st=aw", "_blank", "noopener,noreferrer")}
+                role="button"
+                tabIndex={0}
+                title="Click image to open location map"
+              >
+                <span>02</span>
+                <div>
+                  <CalendarDays />
+                  <p className="event-date-text">Wednesday · October 14</p>
+                  <h3>Wedding</h3>
+                  <p className="event-time-text">10:00 AM in the Morning · St.Mary's Church, Vallavilai</p>
+                  <small>Traditional Indian Attire</small>
+                  <div className="mt-5" onClick={(e) => e.stopPropagation()}>
+                    <Button asChild variant="outline" className="bg-transparent border-white/40 text-white hover:bg-white/10 hover:text-white backdrop-blur-sm">
+                      <a href="https://maps.app.goo.gl/yDX9gXNNEFK3rAhq7?g_st=aw" target="_blank" rel="noreferrer">
+                        <MapPin className="mr-2 h-4 w-4" /> View Map
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </article>
+
+              <article 
+                className="event-card event-reception"  
+                style={{ backgroundImage: `url(${receptionImage})` }} 
+                data-reveal
+                onClick={() => window.open("https://maps.app.goo.gl/hgjhZnmWVZ2ZWevT6?g_st=aw", "_blank", "noopener,noreferrer")}
+                role="button"
+                tabIndex={0}
+                title="Click image to open location map"
+              >
+                <span>03</span>
+                <div>
+                  <CalendarDays />
+                  <p className="event-date-text">Wednesday · October 14</p>
+                  <h3>Reception</h3>
+                  <p className="event-time-text">11:30 AM in the Morning · St.Mary's Community Hall, Vallavilai</p>
+                  <small>Lunch &amp; Celebration </small>
+                  <div className="mt-5" onClick={(e) => e.stopPropagation()}>
+                    <Button asChild variant="outline" className="bg-transparent border-white/40 text-white hover:bg-white/10 hover:text-white backdrop-blur-sm">
+                      <a href="https://maps.app.goo.gl/hgjhZnmWVZ2ZWevT6?g_st=aw" target="_blank" rel="noreferrer">
+                        <MapPin className="mr-2 h-4 w-4" /> View Map
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </article>
             </div>
           </section>
 
@@ -510,7 +597,27 @@ export function WeddingInvitation() {
           <section className="final-section">
             <img src={laughImage} alt="Subin and Siluvadhasi laughing together at dusk" width={1280} height={912} loading="lazy" />
             <div className="final-shade" />
-            <div data-reveal><Sparkles /><p className="eyebrow">With you, always</p><h2>And So Our<br /><em>Forever Begins...</em></h2><p>14 · 10 · 2026</p><span>Subin &amp; Siluvadhasi</span></div>
+            <div className="final-content" data-reveal>
+              <Sparkles />
+              <p className="eyebrow">With you, always</p>
+              <h2>And So Our<br /><em>Forever Begins...</em></h2>
+              <p>14 · 10 · 2026</p>
+              <span>Subin &amp; Siluvadhasi</span>
+              
+              <div className="brother-invitation-wrap">
+                <button
+                  type="button"
+                  className="brother-invite-btn"
+                  onClick={() => setBrotherModalOpen(true)}
+                >
+                  <Sparkles className="brother-symbol" />
+                  <div className="brother-btn-text">
+                    <span>BROTHER'S WEDDING</span>
+                    <span>INVITATION</span>
+                  </div>
+                </button>
+              </div>
+            </div>
           </section>
 
           {lightbox !== null && (
@@ -520,6 +627,60 @@ export function WeddingInvitation() {
               <img src={gallery[lightbox]?.src} alt={gallery[lightbox]?.alt ?? "Wedding memory"} />
               <Button size="icon" variant="ghost" className="lightbox-next" onClick={() => moveLightbox(1)} aria-label="Next photo"><ChevronRight /></Button>
               <span>{lightbox + 1} / {gallery.length}</span>
+            </div>
+          )}
+
+          {brotherModalOpen && (
+            <div
+              className="brother-modal-backdrop"
+              role="dialog"
+              aria-modal="true"
+              aria-label="My Brother's Invitation Modal"
+              onClick={() => setBrotherModalOpen(false)}
+            >
+              <div
+                className="brother-modal-card"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  className="brother-modal-close"
+                  onClick={() => setBrotherModalOpen(false)}
+                  aria-label="Close modal"
+                >
+                  <X size={18} />
+                </button>
+
+                <div className="brother-modal-icon" aria-hidden="true">
+                  ✦
+                </div>
+
+                <p className="brother-modal-eyebrow">A SPECIAL CELEBRATION</p>
+
+                <h2 className="brother-modal-title">My Brother's Invitation</h2>
+
+                <p className="brother-modal-desc">
+                  We warmly invite you to explore and celebrate my brother's upcoming wedding celebration as well.
+                </p>
+
+                <a
+                  href="https://velvet-stories26.github.io/vows-invites-2/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="brother-modal-btn"
+                >
+                  <Heart size={16} fill="currentColor" />
+                  <span>VIEW INVITATION</span>
+                </a>
+
+                <button
+                  type="button"
+                  className="brother-modal-link-close"
+                  onClick={() => setBrotherModalOpen(false)}
+                >
+                  Close
+                </button>
+              </div>
             </div>
           )}
         </>

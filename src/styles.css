@@ -1174,10 +1174,29 @@ a {
 }
 
 .event-list p {
-  font: 500 .62rem var(--font-sans);
+  margin: 0;
+}
+
+.event-list p.event-date-text {
+  font-family: var(--font-sans);
+  font-size: clamp(0.85rem, 2.4vw, 1.02rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--champagne);
   text-transform: uppercase;
-  letter-spacing: .12em;
-  color: color-mix(in oklab, #fff 82%, transparent)
+  margin-bottom: 0.2rem;
+}
+
+.event-list p.event-time-text {
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 2.7vw, 1.15rem);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.95);
+  text-transform: none;
+  margin-top: 0.4rem;
+  margin-bottom: 0.55rem;
+  line-height: 1.45;
 }
 
 .event-list h3 {
@@ -2415,10 +2434,13 @@ a {
 
 .final-section {
   position: relative;
-  height: 100svh;
-  min-height: 650px;
-  display: grid;
-  place-items: center;
+  min-height: 100svh;
+  height: auto;
+  padding: 5rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color: var(--primary-foreground)
 }
@@ -2607,4 +2629,262 @@ a {
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important
   }
+}
+
+/* ==========================================================================
+   Brother's Invitation Footer & Modal Styles
+   ========================================================================== */
+
+.brother-invitation-wrap {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.brother-invite-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 280px;
+  max-width: 92%;
+  min-height: 52px;
+  padding: 0.45rem 1.2rem;
+  box-sizing: border-box;
+  border-radius: 9999px;
+  background: linear-gradient(110deg, #ab8646 0%, #d6b879 32%, #f3e4bd 50%, #cca961 72%, #937233 100%);
+  border: 1px solid rgba(255, 245, 215, 0.85);
+  color: #1a1208;
+  cursor: pointer;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.85), 0 8px 24px rgba(0, 0, 0, 0.45);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brother-invite-btn:hover {
+  background: linear-gradient(110deg, #b79250 0%, #e0c283 32%, #f8ecc8 50%, #d7b46c 72%, #9e7b3a 100%);
+  color: #000000;
+  border-color: #ffffff;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(243, 228, 189, 0.4);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.brother-symbol,
+.brother-invite-btn svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+  color: #1a1208 !important;
+  align-self: center;
+  margin: auto 0;
+  transition: transform 0.25s ease;
+}
+
+.brother-invite-btn:hover svg {
+  transform: scale(1.15) rotate(10deg);
+}
+
+.brother-btn-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.25;
+}
+
+.brother-btn-text span {
+  font-family: var(--font-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a1208;
+  margin: 0;
+  display: block;
+}
+
+/* Modal Overlay & Card (Letter Section Theme) */
+.brother-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(18, 14, 10, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: brother-modal-fade-in 0.3s ease-out forwards;
+}
+
+@keyframes brother-modal-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.brother-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  padding: 2.75rem 2rem 2rem;
+  border-radius: 24px;
+  background: radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.7), transparent 60%), var(--secondary);
+  border: 1px solid rgba(167, 123, 54, 0.35);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3), 0 0 30px rgba(167, 123, 54, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--foreground);
+  animation: brother-modal-slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes brother-modal-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.brother-modal-close {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(167, 123, 54, 0.12);
+  border: 1px solid rgba(167, 123, 54, 0.25);
+  color: #2c2219;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.brother-modal-close:hover {
+  background: rgba(167, 123, 54, 0.25);
+  color: #000000;
+  transform: rotate(90deg) scale(1.06);
+}
+
+.brother-modal-icon {
+  color: var(--primary);
+  font-size: 1.35rem;
+  margin-bottom: 0.75rem;
+  filter: drop-shadow(0 0 8px rgba(167, 123, 54, 0.3));
+  animation: sparkle-float 3s ease-in-out infinite alternate;
+}
+
+@keyframes sparkle-float {
+  0% {
+    transform: scale(0.95) rotate(-5deg);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1.1) rotate(5deg);
+    opacity: 1;
+  }
+}
+
+.brother-modal-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.65rem;
+}
+
+.brother-modal-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 5.5vw, 2.3rem);
+  font-weight: 400;
+  color: #2c2219;
+  margin: 0 0 0.85rem;
+  line-height: 1.15;
+}
+
+.brother-modal-desc {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 310px;
+  margin: 0 0 1.75rem;
+}
+
+.brother-modal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.8rem 2.2rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #a77b36 0%, #ead49d 50%, #96702d 100%);
+  color: #15100c;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(167, 123, 54, 0.35);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  max-width: 270px;
+}
+
+.brother-modal-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(167, 123, 54, 0.5);
+  color: #000000;
+}
+
+.brother-modal-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.brother-modal-btn:hover svg {
+  transform: scale(1.2);
+}
+
+.brother-modal-link-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ink-soft);
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  margin-top: 1.25rem;
+  transition: color 0.2s ease;
+  padding: 0.25rem 0.5rem;
+}
+
+.brother-modal-link-close:hover {
+  color: #15100c;
+}
+
+/* Event Card Interactivity */
+.event-card {
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
 }
