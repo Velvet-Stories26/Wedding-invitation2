@@ -221,7 +221,7 @@ export function WeddingInvitation() {
 
       const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
-      const interval: any = setInterval(function() {
+      const interval: any = setInterval(function () {
         const timeLeft = animationEnd - Date.now();
 
         if (timeLeft <= 0) {
@@ -259,6 +259,13 @@ export function WeddingInvitation() {
       }).catch((err) => {
         console.log("Audio play error:", err);
       });
+    }
+  };
+
+  const pauseMusic = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      setMusic(false);
     }
   };
 
@@ -407,7 +414,7 @@ export function WeddingInvitation() {
               {Object.entries(countdown).map(([label, value]) => <div key={label}><strong>{mounted ? String(value).padStart(2, "0") : "00"}</strong><span>{label}</span></div>)}
             </div>
           </section>
-                    <section id="memories" className="slideshow-section">
+          <section id="memories" className="slideshow-section">
             {gallery.map((image, index) => <img key={image.src} className={slide === index ? "active" : ""} src={image.src} alt={image.alt} width={1280} height={index === 0 ? 1536 : 912} loading="lazy" />)}
             <div className="slideshow-shade" />
             <div className="slideshow-copy" data-reveal><p className="eyebrow">Beautiful memories</p><h2>Every frame, a chapter</h2><p>Of laughter held close and moments we will carry into forever.</p></div>
@@ -452,9 +459,9 @@ export function WeddingInvitation() {
             <img className="torn-edge torn-edge-bottom" src={bottomTornEdge} alt="" aria-hidden="true" />
             <div data-reveal><p className="eyebrow">The celebrations</p><h2>Join us for</h2></div>
             <div className="event-list">
-              <article 
-                className="event-card event-engagement" 
-                style={{ backgroundImage: `url(${engagementImage})` }} 
+              <article
+                className="event-card event-engagement"
+                style={{ backgroundImage: `url(${engagementImage})` }}
                 data-reveal
                 onClick={() => window.open("https://maps.app.goo.gl/vwfTitZmioioe1EC8?g_st=aw", "_blank", "noopener,noreferrer")}
                 role="button"
@@ -478,9 +485,9 @@ export function WeddingInvitation() {
                 </div>
               </article>
 
-              <article 
-                className="event-card event-wedding" 
-                style={{ backgroundImage: `url(${weddingImage})` }} 
+              <article
+                className="event-card event-wedding"
+                style={{ backgroundImage: `url(${weddingImage})` }}
                 data-reveal
                 onClick={() => window.open("https://maps.app.goo.gl/yDX9gXNNEFK3rAhq7?g_st=aw", "_blank", "noopener,noreferrer")}
                 role="button"
@@ -504,9 +511,9 @@ export function WeddingInvitation() {
                 </div>
               </article>
 
-              <article 
-                className="event-card event-reception"  
-                style={{ backgroundImage: `url(${receptionImage})` }} 
+              <article
+                className="event-card event-reception"
+                style={{ backgroundImage: `url(${receptionImage})` }}
                 data-reveal
                 onClick={() => window.open("https://maps.app.goo.gl/hgjhZnmWVZ2ZWevT6?g_st=aw", "_blank", "noopener,noreferrer")}
                 role="button"
@@ -532,50 +539,50 @@ export function WeddingInvitation() {
             </div>
           </section>
 
-         <section className={`letter-section ${letterOpen ? "is-open" : ""}`}>
-          <div className="letter-header" data-reveal>
-            <p className="eyebrow">A little note for you</p>
-            <h2>Words From Our Hearts</h2>
-          </div>
-
-          <div className={`image-letter-wrapper ${letterOpen ? "is-open" : ""}`} data-reveal>
-            {/* Closed envelope image */}
-            <div className="letter-closed-img">
-              <img src={letterClosedImage} alt="Sealed love letter envelope" width={1200} height={700} />
-              {!letterOpen && (
-                <button
-                  className="letter-img-seal"
-                  onClick={() => setLetterOpen(true)}
-                  aria-label="Open our love letter"
-                  title="Click seal to open letter"
-                />
-              )}
+          <section className={`letter-section ${letterOpen ? "is-open" : ""}`}>
+            <div className="letter-header" data-reveal>
+              <p className="eyebrow">A little note for you</p>
+              <h2>Words From Our Hearts</h2>
             </div>
 
-            {/* Open envelope image */}
-            <div className="letter-open-img">
-              <img src={letterOpenImage} alt="Opened love letter with heartfelt message" width={1200} height={1200} />
-              {letterOpen && (
-                <button
-                  className="letter-open-seal"
-                  onClick={() => setLetterOpen(false)}
-                  aria-label="Close our love letter"
-                  title="Click seal to close letter"
-                />
-              )}
-            </div>
-
-            {/* Caption */}
-            <div className="letter-caption">
-              <span className="caption-line" />
-              <div className="caption-content">
-                <span className="caption-icon">{letterOpen ? "✦" : "☝"}</span>
-                <p>{letterOpen ? "Tap the seal to close letter" : "Tap the seal to open our letter"}</p>
+            <div className={`image-letter-wrapper ${letterOpen ? "is-open" : ""}`} data-reveal>
+              {/* Closed envelope image */}
+              <div className="letter-closed-img">
+                <img src={letterClosedImage} alt="Sealed love letter envelope" width={1200} height={700} />
+                {!letterOpen && (
+                  <button
+                    className="letter-img-seal"
+                    onClick={() => setLetterOpen(true)}
+                    aria-label="Open our love letter"
+                    title="Click seal to open letter"
+                  />
+                )}
               </div>
-              <span className="caption-line" />
+
+              {/* Open envelope image */}
+              <div className="letter-open-img">
+                <img src={letterOpenImage} alt="Opened love letter with heartfelt message" width={1200} height={1200} />
+                {letterOpen && (
+                  <button
+                    className="letter-open-seal"
+                    onClick={() => setLetterOpen(false)}
+                    aria-label="Close our love letter"
+                    title="Click seal to close letter"
+                  />
+                )}
+              </div>
+
+              {/* Caption */}
+              <div className="letter-caption">
+                <span className="caption-line" />
+                <div className="caption-content">
+                  <span className="caption-icon">{letterOpen ? "✦" : "☝"}</span>
+                  <p>{letterOpen ? "Tap the seal to close letter" : "Tap the seal to open our letter"}</p>
+                </div>
+                <span className="caption-line" />
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
           {/* <section id="venue" className="venue-section paper-section">
             <div className="venue-image"><img src={heroImage} alt="Palace gardens at the wedding venue" width={1024} height={1536} loading="lazy" /></div>
@@ -603,7 +610,7 @@ export function WeddingInvitation() {
               <h2>And So Our<br /><em>Forever Begins...</em></h2>
               <p>14 · 10 · 2026</p>
               <span>Subin &amp; Siluvadhasi</span>
-              
+
               <div className="brother-invitation-wrap">
                 <button
                   type="button"
@@ -668,6 +675,7 @@ export function WeddingInvitation() {
                   target="_blank"
                   rel="noreferrer"
                   className="brother-modal-btn"
+                  onClick={pauseMusic}
                 >
                   <Heart size={16} fill="currentColor" />
                   <span>VIEW INVITATION</span>
