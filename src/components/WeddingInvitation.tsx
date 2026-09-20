@@ -577,7 +577,7 @@ export function WeddingInvitation() {
                 <span className="caption-line" />
                 <div className="caption-content">
                   <span className="caption-icon">{letterOpen ? "✦" : "☝"}</span>
-                  <p>{letterOpen ? "Tap the seal to close letter" : "Tap the seal to open our letter"}</p>
+                  <p style={{color: "black"}}>{letterOpen ? "Tap the seal to close letter" : "Tap the seal to open our letter"}</p>
                 </div>
                 <span className="caption-line" />
               </div>
