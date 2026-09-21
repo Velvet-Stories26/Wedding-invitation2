@@ -15,8 +15,8 @@ import {
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/couple-hero.jpg";
-import walkImage from "@/assets/memory-walk.png";
+import heroImage from "@/assets/couple-hero.png";
+import walkImage from "@/assets/memory-walk.jpg";
 import ringsImage from "@/assets/memory-rings.png";
 import laughImage from "@/assets/memory-laugh.png";
 import weddingRingImage from "@/assets/ring-image.png";
@@ -42,8 +42,8 @@ const slideshowImages = [
   { src: heroImage, alt: "Subin and Siluvadhasi in a palace garden" },
   { src: weddingRingImage, alt: "Wedding rings" },
   { src: ringsImage, alt: "Henna, heirloom rings and jasmine" },
-  { src: walkImage, alt: "The couple walking through a sunlit colonnade" },
   { src: venueImage, alt: "Venue"},
+  { src: walkImage, alt: "The couple walking through a sunlit colonnade" },
 ];
 
 const galleryImages = [
