@@ -19,6 +19,10 @@ import heroImage from "@/assets/couple-hero.jpg";
 import walkImage from "@/assets/memory-walk.jpg";
 import ringsImage from "@/assets/memory-rings.jpg";
 import laughImage from "@/assets/memory-laugh.png";
+import weddingRingImage from "@/assets/ring-image.png";
+import bOutfitImage from "@/assets/bride's-outfit.png";
+import gOutfitImage from "@/assets/groom's-outfit.png";
+import venueImage from "@/assets/venue.png";
 import startAnimeVideo from "@/assets/start-anime.mp4";
 import weddingAnimation from "@/assets/wedding-animation.mp4";
 import invitationBg from "@/assets/invitaion-bg.png";
@@ -33,10 +37,10 @@ import playbackAudio from "@/assets/playback.mp3";
 
 const weddingDate = new Date("2026-10-14T10:00:00+05:30");
 const gallery = [
-  { src: heroImage, alt: "Saanvi and Jai in a palace garden", ratio: "portrait" },
-  { src: ringsImage, alt: "Henna, heirloom rings and jasmine", ratio: "landscape" },
-  { src: walkImage, alt: "The couple walking through a sunlit colonnade", ratio: "portrait" },
-  { src: laughImage, alt: "The couple laughing beneath white flowers", ratio: "landscape" },
+  { src: venueImage, alt: "Saanvi and Jai in a palace garden", ratio: "portrait" },
+  { src: weddingRingImage, alt: "Henna, heirloom rings and jasmine", ratio: "portrait" },
+  { src: bOutfitImage, alt: "The couple walking through a sunlit colonnade", ratio: "portrait" },
+  { src: gOutfitImage, alt: "The couple laughing beneath white flowers", ratio: "portrait" },
 ];
 
 function useCountdown() {
@@ -417,7 +421,7 @@ export function WeddingInvitation() {
           <section id="memories" className="slideshow-section">
             {gallery.map((image, index) => <img key={image.src} className={slide === index ? "active" : ""} src={image.src} alt={image.alt} width={1280} height={index === 0 ? 1536 : 912} loading="lazy" />)}
             <div className="slideshow-shade" />
-            <div className="slideshow-copy" data-reveal><p className="eyebrow">Beautiful memories</p><h2>Every frame, a chapter</h2><p>Of laughter held close and moments we will carry into forever.</p></div>
+            <div className="slideshow-copy" data-reveal><p className="eyebrow"></p><h2>A Story Yet to Be Captured</h2><p>The little moments of love and togetherness we look forward to creating and cherishing in the years ahead.</p></div>
             <div className="slide-dots">{gallery.map((_, index) => <button key={index} className={slide === index ? "active" : ""} onClick={() => setSlide(index)} aria-label={`Show slide ${index + 1}`} />)}</div>
           </section>
 
@@ -441,18 +445,18 @@ export function WeddingInvitation() {
           <section className="gallery-section paper-section torn-section">
             <img className="torn-edge torn-edge-top" src={topTornEdge} alt="" aria-hidden="true" />
             <img className="torn-edge torn-edge-bottom" src={bottomTornEdge} alt="" aria-hidden="true" />
-            <div data-reveal><p className="eyebrow">Through our eyes</p><h2>A few favorite moments</h2></div>
+            <div data-reveal><p className="eyebrow">Through our eyes</p><h2>A Vision for Our Day</h2><p>The little details and beautiful moments we imagine for our wedding day.</p></div>
             <div className="gallery-grid">
               {gallery.map((image, index) => <button key={image.src} className={image.ratio} onClick={() => setLightbox(index)} aria-label={`View ${image.alt} fullscreen`}><img src={image.src} alt={image.alt} width={1024} height={1280} loading="lazy" /><span>0{index + 1}</span></button>)}
             </div>
           </section>
 
-          <section className="polaroid-section">
+          {/* <section className="polaroid-section">
             <div data-reveal><p className="eyebrow">Little pieces of us</p><h2>Polaroid memories</h2></div>
             <div className="polaroids">
               {[walkImage, laughImage, ringsImage].map((src, index) => <figure key={src}><img src={src} alt={["A walk to remember", "The laugh we love", "A promise in gold"][index]} width={500} height={600} loading="lazy" /><figcaption>{["the long way home", "always laughing", "the promise"][index]}</figcaption></figure>)}
             </div>
-          </section>
+          </section> */}
 
           <section id="events" className="events-section paper-section torn-section">
             <img className="torn-edge torn-edge-top" src={topTornEdge} alt="" aria-hidden="true" />

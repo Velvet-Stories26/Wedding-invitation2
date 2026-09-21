@@ -1162,7 +1162,8 @@ a {
 }
 
 .gallery-section {
-  text-align: center
+  text-align: center;
+   background: var(--secondary);
 }
 
 .gallery-grid {
@@ -1170,7 +1171,8 @@ a {
   grid-template-columns: repeat(2, 1fr);
   gap: .6rem;
   max-width: 62rem;
-  margin: 3rem auto 0
+  margin: 3rem auto 0;
+ 
 }
 
 .gallery-grid button {
