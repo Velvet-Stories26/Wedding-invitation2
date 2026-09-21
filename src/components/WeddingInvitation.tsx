@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/couple-hero.jpg";
 import walkImage from "@/assets/memory-walk.jpg";
 import ringsImage from "@/assets/memory-rings.jpg";
-import laughImage from "@/assets/memory-laugh.jpg";
+import laughImage from "@/assets/memory-laugh.png";
 import startAnimeVideo from "@/assets/start-anime.mp4";
 import weddingAnimation from "@/assets/wedding-animation.mp4";
 import invitationBg from "@/assets/invitaion-bg.png";
