@@ -16,8 +16,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/couple-hero.jpg";
-import walkImage from "@/assets/memory-walk.jpg";
-import ringsImage from "@/assets/memory-rings.jpg";
+import walkImage from "@/assets/memory-walk.png";
+import ringsImage from "@/assets/memory-rings.png";
 import laughImage from "@/assets/memory-laugh.png";
 import weddingRingImage from "@/assets/ring-image.png";
 import bOutfitImage from "@/assets/bride's-outfit.png";
@@ -36,11 +36,21 @@ import letterOpenImage from "@/assets/letter-open.png";
 import playbackAudio from "@/assets/playback.mp3";
 
 const weddingDate = new Date("2026-10-14T10:00:00+05:30");
-const gallery = [
-  { src: venueImage, alt: "Saanvi and Jai in a palace garden", ratio: "portrait" },
-  { src: weddingRingImage, alt: "Henna, heirloom rings and jasmine", ratio: "portrait" },
-  { src: bOutfitImage, alt: "The couple walking through a sunlit colonnade", ratio: "portrait" },
-  { src: gOutfitImage, alt: "The couple laughing beneath white flowers", ratio: "portrait" },
+const slideshowImages = [
+  { src: bOutfitImage, alt: "Bride's outfit"},
+  { src: gOutfitImage, alt: "Groom's outfit"},
+  { src: heroImage, alt: "Subin and Siluvadhasi in a palace garden" },
+  { src: weddingRingImage, alt: "Wedding rings" },
+  { src: ringsImage, alt: "Henna, heirloom rings and jasmine" },
+  { src: walkImage, alt: "The couple walking through a sunlit colonnade" },
+  { src: venueImage, alt: "Venue"},
+];
+
+const galleryImages = [
+  { src: weddingRingImage, alt: "Wedding rings", ratio: "portrait" },
+  { src: bOutfitImage, alt: "Bride's outfit", ratio: "portrait" },
+  { src: gOutfitImage, alt: "Groom's outfit", ratio: "portrait" },
+  { src: venueImage, alt: "Venue", ratio: "portrait" },
 ];
 
 function useCountdown() {
@@ -248,7 +258,7 @@ export function WeddingInvitation() {
   }, [revealedDates]);
 
   useEffect(() => {
-    const timer = window.setInterval(() => setSlide((value) => (value + 1) % gallery.length), 4800);
+    const timer = window.setInterval(() => setSlide((value) => (value + 1) % slideshowImages.length), 4800);
     return () => window.clearInterval(timer);
   }, []);
 
@@ -286,7 +296,7 @@ export function WeddingInvitation() {
   };
 
   const moveLightbox = (direction: number) => {
-    setLightbox((current) => current === null ? 0 : (current + direction + gallery.length) % gallery.length);
+    setLightbox((current) => current === null ? 0 : (current + direction + galleryImages.length) % galleryImages.length);
   };
 
   return (
@@ -419,10 +429,10 @@ export function WeddingInvitation() {
             </div>
           </section>
           <section id="memories" className="slideshow-section">
-            {gallery.map((image, index) => <img key={image.src} className={slide === index ? "active" : ""} src={image.src} alt={image.alt} width={1280} height={index === 0 ? 1536 : 912} loading="lazy" />)}
+            {slideshowImages.map((image, index) => <img key={image.src} className={slide === index ? "active" : ""} src={image.src} alt={image.alt} width={1280} height={index === 0 ? 1536 : 912} loading="lazy" />)}
             <div className="slideshow-shade" />
             <div className="slideshow-copy" data-reveal><p className="eyebrow"></p><h2>A Story Yet to Be Captured</h2><p>The little moments of love and togetherness we look forward to creating and cherishing in the years ahead.</p></div>
-            <div className="slide-dots">{gallery.map((_, index) => <button key={index} className={slide === index ? "active" : ""} onClick={() => setSlide(index)} aria-label={`Show slide ${index + 1}`} />)}</div>
+            <div className="slide-dots">{slideshowImages.map((_, index) => <button key={index} className={slide === index ? "active" : ""} onClick={() => setSlide(index)} aria-label={`Show slide ${index + 1}`} />)}</div>
           </section>
 
           {/* <section id="story" className="story-section paper-section">
@@ -447,7 +457,7 @@ export function WeddingInvitation() {
             <img className="torn-edge torn-edge-bottom" src={bottomTornEdge} alt="" aria-hidden="true" />
             <div data-reveal><p className="eyebrow">Through our eyes</p><h2>A Vision for Our Day</h2><p>The little details and beautiful moments we imagine for our wedding day.</p></div>
             <div className="gallery-grid">
-              {gallery.map((image, index) => <button key={image.src} className={image.ratio} onClick={() => setLightbox(index)} aria-label={`View ${image.alt} fullscreen`}><img src={image.src} alt={image.alt} width={1024} height={1280} loading="lazy" /><span>0{index + 1}</span></button>)}
+              {galleryImages.map((image, index) => <button key={image.src} className={image.ratio} onClick={() => setLightbox(index)} aria-label={`View ${image.alt} fullscreen`}><img src={image.src} alt={image.alt} width={1024} height={1280} loading="lazy" /><span>0{index + 1}</span></button>)}
             </div>
           </section>
 
@@ -635,9 +645,9 @@ export function WeddingInvitation() {
             <div className="lightbox" role="dialog" aria-modal="true" aria-label="Photo gallery" onPointerDown={(event) => { swipeStart.current = event.clientX; }} onPointerUp={(event) => { const distance = event.clientX - swipeStart.current; if (Math.abs(distance) > 40) moveLightbox(distance > 0 ? -1 : 1); }}>
               <Button size="icon" variant="ghost" className="lightbox-close" onClick={() => setLightbox(null)} aria-label="Close gallery"><X /></Button>
               <Button size="icon" variant="ghost" className="lightbox-prev" onClick={() => moveLightbox(-1)} aria-label="Previous photo"><ChevronLeft /></Button>
-              <img src={gallery[lightbox]?.src} alt={gallery[lightbox]?.alt ?? "Wedding memory"} />
+              <img src={galleryImages[lightbox]?.src} alt={galleryImages[lightbox]?.alt ?? "Wedding memory"} />
               <Button size="icon" variant="ghost" className="lightbox-next" onClick={() => moveLightbox(1)} aria-label="Next photo"><ChevronRight /></Button>
-              <span>{lightbox + 1} / {gallery.length}</span>
+              <span>{lightbox + 1} / {galleryImages.length}</span>
             </div>
           )}
 
