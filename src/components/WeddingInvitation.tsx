@@ -39,11 +39,12 @@ const weddingDate = new Date("2026-10-14T10:00:00+05:30");
 const slideshowImages = [
   { src: bOutfitImage, alt: "Bride's outfit"},
   { src: gOutfitImage, alt: "Groom's outfit"},
-  { src: heroImage, alt: "Subin and Siluvadhasi in a palace garden" },
+  { src: walkImage, alt: "The couple walking through a sunlit colonnade" },
   { src: weddingRingImage, alt: "Wedding rings" },
   { src: ringsImage, alt: "Henna, heirloom rings and jasmine" },
   { src: venueImage, alt: "Venue"},
-  { src: walkImage, alt: "The couple walking through a sunlit colonnade" },
+  { src: heroImage, alt: "Subin and Siluvadhasi in a palace garden" },
+  
 ];
 
 const galleryImages = [
