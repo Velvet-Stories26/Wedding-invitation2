@@ -686,7 +686,7 @@ export function WeddingInvitation() {
                 </p>
 
                 <a
-                  href="https://velvet-stories26.github.io/vows-invites-2/"
+                  href="https://velvet-stories26.github.io/Wedding-invitation1/"
                   target="_blank"
                   rel="noreferrer"
                   className="brother-modal-btn"
