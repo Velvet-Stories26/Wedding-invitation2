@@ -28,7 +28,6 @@ import weddingAnimation from "@/assets/wedding-animation.mp4";
 import invitationBg from "@/assets/invitaion-bg.png";
 import engagementImage from "@/assets/engagement.png";
 import weddingImage from "@/assets/wedding.png";
-import receptionImage from "@/assets/invitaion1-bg.png";
 import topTornEdge from "@/assets/top-torn-svg.svg";
 import bottomTornEdge from "@/assets/bottom-torn-svg.svg";
 import letterClosedImage from "@/assets/letter.png";
@@ -526,31 +525,7 @@ export function WeddingInvitation() {
                 </div>
               </article>
 
-              <article
-                className="event-card event-reception"
-                style={{ backgroundImage: `url(${receptionImage})` }}
-                data-reveal
-                onClick={() => window.open("https://maps.app.goo.gl/hgjhZnmWVZ2ZWevT6?g_st=aw", "_blank", "noopener,noreferrer")}
-                role="button"
-                tabIndex={0}
-                title="Click image to open location map"
-              >
-                <span>03</span>
-                <div>
-                  <CalendarDays />
-                  <p className="event-date-text">Wednesday · October 14</p>
-                  <h3>Reception</h3>
-                  <p className="event-time-text">11:30 AM in the Morning · St.Mary's Community Hall, Vallavilai</p>
-                  <small>Lunch &amp; Celebration </small>
-                  <div className="mt-5" onClick={(e) => e.stopPropagation()}>
-                    <Button asChild variant="outline" className="bg-transparent border-white/40 text-white hover:bg-white/10 hover:text-white backdrop-blur-sm">
-                      <a href="https://maps.app.goo.gl/hgjhZnmWVZ2ZWevT6?g_st=aw" target="_blank" rel="noreferrer">
-                        <MapPin className="mr-2 h-4 w-4" /> View Map
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </article>
+             
             </div>
           </section>
 
