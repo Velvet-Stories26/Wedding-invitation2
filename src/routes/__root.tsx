@@ -77,7 +77,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "jijitha_subith_marriage inv" },
       { name: "description", content: "Join us as we celebrate the beginning of forever. A premium wedding invitation experience." },
       { name: "author", content: "Saanvi & Jai" },
       { property: "og:type", content: "website" },
